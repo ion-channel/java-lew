@@ -22,7 +22,7 @@ public class GeoNameService {
 
   @GET
   @Produces("application/json")
-  @Path("geocode")
+  @Path("geonames")
   public Response geocodeFromGet(@QueryParam("query") String input) {
     return getResponseForQueryString(input);
   }
@@ -30,7 +30,7 @@ public class GeoNameService {
   @POST
   @Produces("application/json")
   @Consumes("text/plain")
-  @Path("geocode")
+  @Path("geonames")
   public Response geocodeFromPost(String input) {
     return getResponseForQueryString(input);
   }
