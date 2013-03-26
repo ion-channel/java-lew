@@ -1,0 +1,1 @@
+Simple JSON Service for resolving GeoNames from unstructured input text.

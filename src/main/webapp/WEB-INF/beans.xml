@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd">
+
+  <import resource="classpath:META-INF/cxf/cxf.xml" />
+
+  <context:property-placeholder/>
+  <context:annotation-config/>
+  <bean class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer"/>
+  <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
+
+    <bean id="namedEntityRecognizer" class="com.berico.clavin.nerd.ExternalSequenceClassifierProvider">
+        <constructor-arg value="/data/all.3class.distsim.crf.ser.gz" />
+    </bean>
+
+    <bean id="locationExtractor" class="com.berico.clavin.nerd.NerdLocationExtractor">
+        <constructor-arg type="com.berico.clavin.nerd.SequenceClassifierProvider" ref="namedEntityRecognizer"/>
+    </bean>
+
+    <bean id="clavin" class="com.berico.clavin.GeoParser">
+        <constructor-arg name="pathToIndex" value="/data/IndexDirectory/" />
+        <constructor-arg name="maxHitDepth" value="1" />
+        <constructor-arg name="maxContextWindow" value="1" />
+        <constructor-arg name="extractor" ref="locationExtractor" />
+        <constructor-arg name="fuzzy" value="true" />
+    </bean>
+
+
+   <jaxrs:server id="services" address="/">
+    <jaxrs:serviceBeans>
+      <bean class="com.radiantblue.geoname.GeoNameService" >
+            <property name="geoParser" ref="clavin"/>
+      </bean>
+    </jaxrs:serviceBeans>
+    <jaxrs:providers>
+        <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+    </jaxrs:providers>
+    </jaxrs:server>
+
+</beans>
