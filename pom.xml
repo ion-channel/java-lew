@@ -25,6 +25,22 @@
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>true</enabled></snapshots>
         </repository>
+        <repository>
+            <id>codiceSnapshots</id>
+            <name>Codice Snapshots</name>
+            <releases>
+                <enabled>false</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <url>https://tools.codice.org/artifacts/content/repositories/snapshots/</url>
+            <layout>default</layout>
+        </repository>
     </repositories>
 
     <dependencies>
