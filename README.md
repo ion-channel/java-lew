@@ -28,8 +28,8 @@ Setup
 -
 You will need to follow the instructions provided by the CLAVIN project to create the index data.
 
-https://github.com/Berico-Technologies/CLAVIN
-https://github.com/Berico-Technologies/CLAVIN-NERD
+* https://github.com/Berico-Technologies/CLAVIN
+* https://github.com/Berico-Technologies/CLAVIN-NERD
 
 The GeoName Service will look for the IndexDirectory and all.3class.distsim.crf.ser.gz in /data by default. After that
 you can start the service with
