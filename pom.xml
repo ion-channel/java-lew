@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.radiantblue.ossci</groupId>
-    <artifactId>geoname-service</artifactId>
+    <groupId>com.airgap</groupId>
+    <artifactId>lew</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>GeoName Service</name>
@@ -17,6 +17,21 @@
         <test.server.port>8080</test.server.port>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>airgapReleases</id>
+            <name>Airgap Release Repository</name>
+            <url>http://rizzo.airgap.us/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>airgapSnapshots</id>
+            <name>Airgap Snapshot Repository</name>
+            <url>http://rizzo.airgap.us/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>nexus.bericotechnologies.com</id>
@@ -26,8 +41,8 @@
             <snapshots><enabled>true</enabled></snapshots>
         </repository>
         <repository>
-            <id>codiceSnapshots</id>
-            <name>Codice Snapshots</name>
+            <id>airgapSnapshots</id>
+            <name>Airgap Snapshots</name>
             <releases>
                 <enabled>false</enabled>
                 <updatePolicy>always</updatePolicy>
@@ -38,7 +53,7 @@
                 <updatePolicy>never</updatePolicy>
                 <checksumPolicy>fail</checksumPolicy>
             </snapshots>
-            <url>https://tools.codice.org/artifacts/content/repositories/snapshots/</url>
+            <url>http://rizzo.airgap.us/nexus/content/repositories/snapshots/</url>
             <layout>default</layout>
         </repository>
     </repositories>

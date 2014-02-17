@@ -1,4 +1,4 @@
-GeoName Service
+Lew
 =========
 
 Simple JSON Service for resolving GeoNames from unstructured input text.
@@ -31,7 +31,7 @@ You will need to follow the instructions provided by the CLAVIN project to creat
 * https://github.com/Berico-Technologies/CLAVIN
 * https://github.com/Berico-Technologies/CLAVIN-NERD
 
-The GeoName Service will look for the IndexDirectory and all.3class.distsim.crf.ser.gz in /data by default. After that
+Lew will look for the IndexDirectory and all.3class.distsim.crf.ser.gz in /data by default. After that
 you can start the service with
 
 ```sh
