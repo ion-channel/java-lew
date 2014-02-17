@@ -36,7 +36,7 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 
    <jaxrs:server id="services" address="/">
     <jaxrs:serviceBeans>
-      <bean class="com.radiantblue.geoname.GeoNameService" >
+      <bean class="com.airgap.geoname.GeoNameService" >
             <property name="geoParser" ref="clavin"/>
       </bean>
     </jaxrs:serviceBeans>

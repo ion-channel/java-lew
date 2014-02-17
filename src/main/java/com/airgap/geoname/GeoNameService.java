@@ -1,4 +1,4 @@
-package com.radiantblue.geoname;
+package com.airgap.geoname;
 
 import com.berico.clavin.GeoParser;
 import com.berico.clavin.resolver.ResolvedLocation;
