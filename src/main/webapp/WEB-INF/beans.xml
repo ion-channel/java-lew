@@ -21,14 +21,22 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
         <constructor-arg value="/data/all.3class.distsim.crf.ser.gz" />
     </bean>
 
+    <bean id="indexDir" class="java.io.File">
+        <constructor-arg type="java.lang.String" value="/data/IndexDirectory" />
+    </bean>
+
     <bean id="locationExtractor" class="com.berico.clavin.nerd.NerdLocationExtractor">
         <constructor-arg type="com.berico.clavin.nerd.SequenceClassifierProvider" ref="namedEntityRecognizer"/>
     </bean>
 
-    <bean id="clavin" class="com.berico.clavin.GeoParser">
-        <constructor-arg name="pathToIndex" value="/data/IndexDirectory/" />
+    <bean id="resolver" class="com.berico.clavin.resolver.lucene.LuceneLocationResolver" >
+        <constructor-arg name="indexDir" ref="indexDir" />
         <constructor-arg name="maxHitDepth" value="1" />
         <constructor-arg name="maxContextWindow" value="1" />
+    </bean>
+
+    <bean id="clavin" class="com.berico.clavin.GeoParser">
+        <constructor-arg name="resolver" ref="resolver" />
         <constructor-arg name="extractor" ref="locationExtractor" />
         <constructor-arg name="fuzzy" value="true" />
     </bean>

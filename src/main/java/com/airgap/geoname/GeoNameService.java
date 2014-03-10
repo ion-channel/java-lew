@@ -38,7 +38,7 @@ public class GeoNameService {
   private Response getResponseForQueryString(String string){
     List<ResolvedLocation> resolvedLocations = getResolvedLocationsForString(string);
 
-    if(resolvedLocations.isEmpty())
+    if(resolvedLocations == null || resolvedLocations.isEmpty())
       return Response.status(Response.Status.NOT_FOUND).build();
 
     ObjectMapper mapper = new ObjectMapper();
@@ -59,6 +59,8 @@ public class GeoNameService {
     } catch (IOException e) {
       log.error(e);
     } catch (org.apache.lucene.queryparser.classic.ParseException e) {
+      log.error(e);
+    } catch (Exception e) {
       log.error(e);
     }
     return resolvedLocations;
