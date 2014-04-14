@@ -41,5 +41,5 @@ mvn jetty:run
 
 License
 -
-
+(c) Copyright AirGap LLC - 2014
 GPLv2
