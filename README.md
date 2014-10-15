@@ -15,13 +15,13 @@ Usage
 with GET
 
 ```sh
-curl http://localhost:8080/geonames\?query\=New%20York
+curl http://localhost:8080/geoname\?query\=New%20York
 ```
 
 with POST
 
 ```sh
-curl -X POST -d "New York" http://localhost:8080/geonames --header "Content-Type:text/plain"
+curl -X POST -d "New York" http://localhost:8080/geoname --header "Content-Type:text/plain"
 ```
 
 Setup
