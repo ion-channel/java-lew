@@ -39,6 +39,21 @@ mvn jetty:run
 ```
 
 
+Docker
+_
+
+Lew is now built as a docker image, which can be run easily with the following
+command
+
+```sh
+sudo docker run -d -p 80:8080 airgapit/lew
+```
+after it starts you can test with curl
+
+```sh
+curl http://localhost/geoname?query=New+York
+```
+
 License
 -
 (c) Copyright AirGap LLC - 2014

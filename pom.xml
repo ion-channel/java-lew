@@ -4,7 +4,7 @@
 
     <groupId>io.airgap</groupId>
     <artifactId>lew</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Lew</name>
     <description>JSON service for responding to raw text queries with locations</description>
@@ -15,7 +15,14 @@
         <clavin.nerd.version>0.3.1</clavin.nerd.version>
         <clavin.version>0.3.3-RELEASE</clavin.version>
         <test.server.port>8080</test.server.port>
+        <scm.url>smc:git:git@github.com:airgap/lew.git</scm.url>
     </properties>
+
+    <scm>
+        <connection>${scm.url}</connection>
+        <developerConnection>${scm.url}</developerConnection>
+      <tag>HEAD</tag>
+  </scm>
 
     <distributionManagement>
         <repository>
