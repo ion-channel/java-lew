@@ -40,7 +40,7 @@ mvn jetty:run
 
 
 Docker
-_
+-
 
 Lew is now built as a docker image, which can be run easily with the following
 command
