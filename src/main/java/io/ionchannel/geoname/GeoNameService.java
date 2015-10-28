@@ -1,5 +1,5 @@
 /*
-(c) Copyright AirGap LLC - 2014
+(c) Copyright Selection Pressure LLC - 2015
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -16,10 +16,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package io.airgap.geoname;
+package io.ionchannel.geoname;
 
-import com.berico.clavin.GeoParser;
-import com.berico.clavin.resolver.ResolvedLocation;
+import com.bericotech.clavin.GeoParser;
+import com.bericotech.clavin.resolver.ResolvedLocation;
 import org.apache.commons.lang3.text.WordUtils;
 
 import org.apache.log4j.Logger;
@@ -31,8 +31,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -90,7 +88,7 @@ public class GeoNameService {
         try {
             urlBuilder.append(urlWithContext())
                     .append("/geoname?query=")
-                    .append(URLEncoder.encode(resolvedLocation.geoname.name, "UTF-8"));
+                    .append(URLEncoder.encode(resolvedLocation.getGeoname().getName(), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
         }
 
@@ -106,7 +104,7 @@ public class GeoNameService {
         try {
             urlBuilder.append(urlWithContext())
                     .append("/geoname/expand?query=")
-                    .append(URLEncoder.encode(resolvedLocation.geoname.name, "UTF-8"));
+                    .append(URLEncoder.encode(resolvedLocation.getGeoname().getName(), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
         }
 

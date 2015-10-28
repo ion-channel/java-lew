@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.airgap</groupId>
+    <groupId>io.ionchannel</groupId>
     <artifactId>lew</artifactId>
     <version>0.3-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -12,10 +12,10 @@
     <properties>
         <jackson.version>1.8.6</jackson.version>
         <jettyVersion>7.2.0.v20101020</jettyVersion>
-        <clavin.nerd.version>0.3.1</clavin.nerd.version>
-        <clavin.version>0.3.3-RELEASE</clavin.version>
+        <clavin.nerd.version>2.0.0</clavin.nerd.version>
+        <clavin.version>2.0.0</clavin.version>
         <test.server.port>8080</test.server.port>
-        <scm.url>smc:git:git@github.com:airgap/lew.git</scm.url>
+        <scm.url>smc:git:git@github.com:ionchannel/lew.git</scm.url>
     </properties>
 
     <scm>
@@ -25,18 +25,6 @@
   </scm>
 
     <distributionManagement>
-        <repository>
-            <id>airgapReleases</id>
-            <name>Airgap Release Repository</name>
-            <url>http://dev-rizzo.airgap.us/content/repositories/releases/</url>
-        </repository>
-
-        <snapshotRepository>
-            <uniqueVersion>true</uniqueVersion>
-            <id>airgapSnapshots</id>
-            <name>Airgap Snapshot Repository</name>
-            <url>http://dev-rizzo.airgap.us/content/repositories/snapshots/</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <repositories>
@@ -46,22 +34,6 @@
             <url>http://nexus.bericotechnologies.com/content/groups/public</url>
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>true</enabled></snapshots>
-        </repository>
-        <repository>
-            <id>airgapSnapshots</id>
-            <name>Airgap Snapshots</name>
-            <releases>
-                <enabled>false</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>http://dev-rizzo.airgap.us/nexus/content/repositories/snapshots/</url>
-            <layout>default</layout>
         </repository>
     </repositories>
 
@@ -90,7 +62,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>3.0.7.RELEASE</version>
-        </dependency>    
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -98,12 +70,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.berico</groupId>
+            <groupId>com.bericotech</groupId>
             <artifactId>clavin</artifactId>
             <version>${clavin.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.berico</groupId>
+            <groupId>com.bericotech</groupId>
             <artifactId>clavin-nerd</artifactId>
             <version>${clavin.nerd.version}</version>
         </dependency>

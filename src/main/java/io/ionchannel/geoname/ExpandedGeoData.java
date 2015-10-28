@@ -1,14 +1,14 @@
-package io.airgap.geoname;
+package io.ionchannel.geoname;
 
-import com.berico.clavin.gazetteer.CountryCode;
-import com.berico.clavin.resolver.ResolvedLocation;
+import com.bericotech.clavin.gazetteer.CountryCode;
+import com.bericotech.clavin.resolver.ResolvedLocation;
 
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
 /*
-(c) Copyright AirGap LLC - 2014
+(c) Copyright Selection Pressure LLC - 2015
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -94,29 +94,29 @@ public class ExpandedGeoData {
     }
 
     public ExpandedGeoData(ResolvedLocation resolvedLocation, String simple){
-        this.id = resolvedLocation.geoname.geonameID;
-        this.name = resolvedLocation.geoname.name;
-        this.asciiName = resolvedLocation.geoname.asciiName;
-        this.alternateNames = resolvedLocation.geoname.alternateNames;
-        this.latitude = resolvedLocation.geoname.latitude;
-        this.longitude = resolvedLocation.geoname.longitude;
-        this.featureClass = resolvedLocation.geoname.featureClass.description;
-        this.featureCode = resolvedLocation.geoname.featureCode.description;
-        this.primaryCountryCode = resolvedLocation.geoname.primaryCountryCode;
-        this.alternateCountryCodes = resolvedLocation.geoname.alternateCountryCodes;
-        this.admin1Code = resolvedLocation.geoname.admin1Code;
-        this.admin2Code = resolvedLocation.geoname.admin2Code;
-        this.admin3Code = resolvedLocation.geoname.admin3Code;
-        this.admin4Code = resolvedLocation.geoname.admin4Code;
-        this.population = resolvedLocation.geoname.population;
-        this.elevation = resolvedLocation.geoname.elevation;
-        this.digitalElevationModel = resolvedLocation.geoname.digitalElevationModel;
-        this.timezone = resolvedLocation.geoname.timezone;
-        this.modificationDate = resolvedLocation.geoname.modificationDate;
-        this.primaryCountryName = resolvedLocation.geoname.getPrimaryCountryName();
-        this.match = resolvedLocation.matchedName;
-        this.fuzzy = resolvedLocation.fuzzy;
-        this.confidence = resolvedLocation.confidence;
+        this.id = resolvedLocation.getGeoname().getGeonameID();
+        this.name = resolvedLocation.getGeoname().getName();
+        this.asciiName = resolvedLocation.getGeoname().getAsciiName();
+        this.alternateNames = resolvedLocation.getGeoname().getAlternateNames();
+        this.latitude = resolvedLocation.getGeoname().getLatitude();
+        this.longitude = resolvedLocation.getGeoname().getLongitude();
+        this.featureClass = resolvedLocation.getGeoname().getFeatureClass().description;
+        this.featureCode = resolvedLocation.getGeoname().getFeatureCode().getDescription();
+        this.primaryCountryCode = resolvedLocation.getGeoname().getPrimaryCountryCode();
+        this.alternateCountryCodes = resolvedLocation.getGeoname().getAlternateCountryCodes();
+        this.admin1Code = resolvedLocation.getGeoname().getAdmin1Code();
+        this.admin2Code = resolvedLocation.getGeoname().getAdmin2Code();
+        this.admin3Code = resolvedLocation.getGeoname().getAdmin3Code();
+        this.admin4Code = resolvedLocation.getGeoname().getAdmin4Code();
+        this.population = resolvedLocation.getGeoname().getPopulation();
+        this.elevation = resolvedLocation.getGeoname().getElevation();
+        this.digitalElevationModel = resolvedLocation.getGeoname().getDigitalElevationModel();
+        this.timezone = resolvedLocation.getGeoname().getTimezone();
+        this.modificationDate = resolvedLocation.getGeoname().getModificationDate();
+        this.primaryCountryName = resolvedLocation.getGeoname().getPrimaryCountryName();
+        this.match = resolvedLocation.getMatchedName();
+        this.fuzzy = resolvedLocation.isFuzzy();
+        this.confidence = resolvedLocation.getConfidence();
         this.links = new Links(simple);
     }
 
