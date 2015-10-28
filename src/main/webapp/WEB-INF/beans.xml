@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-(c) Copyright AirGap LLC - 2014
+(c) Copyright Selection Pressure LLC - 2015
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -35,34 +35,30 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
   <bean class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer"/>
   <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
 
-    <bean id="namedEntityRecognizer" class="com.berico.clavin.nerd.ExternalSequenceClassifierProvider">
-        <constructor-arg value="/data/all.3class.distsim.crf.ser.gz" />
-    </bean>
-
     <bean id="indexDir" class="java.io.File">
         <constructor-arg type="java.lang.String" value="/data/IndexDirectory" />
     </bean>
 
-    <bean id="locationExtractor" class="com.berico.clavin.nerd.NerdLocationExtractor">
-        <constructor-arg type="com.berico.clavin.nerd.SequenceClassifierProvider" ref="namedEntityRecognizer"/>
+    <bean id="locationExtractor" class="com.bericotech.clavin.nerd.StanfordExtractor">
     </bean>
 
-    <bean id="resolver" class="com.berico.clavin.resolver.lucene.LuceneLocationResolver" >
+
+    <bean id="gazetteer" class="com.bericotech.clavin.gazetteer.query.LuceneGazetteer">
         <constructor-arg name="indexDir" ref="indexDir" />
-        <constructor-arg name="maxHitDepth" value="1" />
-        <constructor-arg name="maxContextWindow" value="1" />
     </bean>
 
-    <bean id="clavin" class="com.berico.clavin.GeoParser">
-        <constructor-arg name="resolver" ref="resolver" />
+    <bean id="clavin" class="com.bericotech.clavin.GeoParser">
         <constructor-arg name="extractor" ref="locationExtractor" />
+        <constructor-arg name="gazetteer" ref="gazetteer" />
+        <constructor-arg name="maxHitDepth" value="3" />
+        <constructor-arg name="maxContextWindow" value="3" />
         <constructor-arg name="fuzzy" value="true" />
     </bean>
 
 
    <jaxrs:server id="services" address="/">
     <jaxrs:serviceBeans>
-      <bean class="io.airgap.geoname.GeoNameService" >
+      <bean class="io.ionchannel.geoname.GeoNameService" >
             <property name="geoParser" ref="clavin"/>
       </bean>
     </jaxrs:serviceBeans>

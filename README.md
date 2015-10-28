@@ -46,7 +46,7 @@ Lew is now built as a docker image, which can be run easily with the following
 command
 
 ```sh
-sudo docker run -d -p 80:8080 airgapit/lew
+sudo docker run -d -p 80:8080 ionchannel/lew
 ```
 after it starts you can test with curl
 
@@ -56,6 +56,6 @@ curl http://localhost/geoname?query=New+York
 
 License
 -
-(c) Copyright AirGap LLC - 2014
+(c) Copyright Selection Pressure LLC - 2015
 
 GPLv2

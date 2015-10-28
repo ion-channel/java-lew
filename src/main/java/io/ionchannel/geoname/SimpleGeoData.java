@@ -1,9 +1,9 @@
-package io.airgap.geoname;
+package io.ionchannel.geoname;
 
-import com.berico.clavin.resolver.ResolvedLocation;
+import com.bericotech.clavin.resolver.ResolvedLocation;
 
 /*
-(c) Copyright AirGap LLC - 2014
+(c) Copyright Selection Pressure LLC - 2015
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -29,6 +29,10 @@ public class SimpleGeoData {
     double confidence;
     Links links;
 
+    int altitude;
+    double latitude;
+    double longitude;
+
     public class Links{
         String expand;
 
@@ -42,23 +46,38 @@ public class SimpleGeoData {
     }
 
 
-    public SimpleGeoData(int id, String name, String country, String match, boolean fuzzy, double confidence, String expand) {
+    public SimpleGeoData(int id,
+                         String name,
+                         String country,
+                         String match,
+                         boolean fuzzy,
+                         double confidence,
+                         int altitude,
+                         double latitude,
+                         double longitude,
+                         String expand) {
         this.confidence = confidence;
         this.id = id;
         this.name = name;
         this.country = country;
+        this.altitude = altitude;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.match = match;
         this.fuzzy = fuzzy;
         this.links = new Links(expand);
     }
 
     public SimpleGeoData(ResolvedLocation resolvedLocation, String expand){
-        this.id = resolvedLocation.geoname.geonameID;
-        this.name = resolvedLocation.geoname.name;
-        this.country = resolvedLocation.geoname.getPrimaryCountryName();
-        this.match = resolvedLocation.matchedName;
-        this.fuzzy = resolvedLocation.fuzzy;
-        this.confidence = resolvedLocation.confidence;
+        this.id = resolvedLocation.getGeoname().getGeonameID();
+        this.name = resolvedLocation.getGeoname().getName();
+        this.country = resolvedLocation.getGeoname().getPrimaryCountryName();
+        this.altitude = resolvedLocation.getGeoname().getElevation();
+        this.latitude = resolvedLocation.getGeoname().getLatitude();
+        this.longitude = resolvedLocation.getGeoname().getLongitude();
+        this.match = resolvedLocation.getMatchedName();
+        this.fuzzy = resolvedLocation.isFuzzy();
+        this.confidence = resolvedLocation.getConfidence();
         this.links = new Links(expand);
     }
 
@@ -73,6 +92,13 @@ public class SimpleGeoData {
     public String getCountry() {
         return country;
     }
+
+    public int getAltitude() { return altitude; }
+
+    public double getLatitude() { return latitude; }
+
+    public double getLongitude() { return longitude; }
+
 
     public String getMatch() {
         return match;
