@@ -15,13 +15,13 @@
         <clavin.nerd.version>2.0.0</clavin.nerd.version>
         <clavin.version>2.0.0</clavin.version>
         <test.server.port>8080</test.server.port>
-        <scm.url>smc:git:git@github.com:ionchannel/lew.git</scm.url>
+        <scm.url>smc:git:git@github.com:ion-channel/lew.git</scm.url>
     </properties>
 
     <scm>
         <connection>${scm.url}</connection>
         <developerConnection>${scm.url}</developerConnection>
-      <tag>HEAD</tag>
+      <tag>lew-0.3</tag>
   </scm>
 
     <distributionManagement>
