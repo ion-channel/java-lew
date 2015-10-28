@@ -1,4 +1,5 @@
 out/
+.vagrant/
 *.iml
 .idea
 target/
