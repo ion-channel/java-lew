@@ -7,7 +7,7 @@
     "builders": [
         {
           "type":     "null",
-          "host":     "lew.vagrant.dev",
+          "ssh_host":     "lew.vagrant.dev",
           "ssh_username": "vagrant",
           "ssh_private_key_file": ".vagrant/machines/lew/virtualbox/private_key"
         },
@@ -16,10 +16,18 @@
           "access_key": "{{user `aws_access_key`}}",
           "secret_key": "{{user `aws_secret_key`}}",
           "region": "us-east-1",
-          "source_ami": "ami-9a562df2",
-          "instance_type": "t2.micro",
+          "source_ami": "ami-d05e75b8",
+          "instance_type": "t2.medium",
           "ssh_username": "ubuntu",
-          "ami_name": "lew-{{timestamp}}"
+          "ami_name": "lew{{timestamp}}",
+          "launch_block_device_mappings": [
+            {
+              "device_name":"/dev/sda1",
+              "volume_size":"20",
+              "volume_type":"gp2",
+              "delete_on_termination": true
+            }
+          ]
         }
     ],
 
@@ -32,6 +40,13 @@
           "type": "shell",
           "inline": [
             "sudo docker run -p 80:8080 -d --restart=always ionchannel/lew"
+          ]
+        },
+        {
+          "type": "shell",
+          "inline": [
+            "sleep 20s",
+            "curl -vvvv \"http://localhost/geoname?query=boston\""
           ]
         }
     ]

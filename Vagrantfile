@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.cpus = 2
     end
     base.vm.box = 'ubuntu/trusty64'
-    base.vm.hostname = 'lew.vagrant.dev'
+    base.vm.hostname = 'lew.ionchannel.dev'
     base.vm.network 'private_network', type: 'dhcp'
   end
 
