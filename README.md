@@ -15,13 +15,13 @@ Usage
 with GET
 
 ```sh
-curl http://localhost:8080/geoname\?query\=New%20York
+curl http://localhost:8080/v1/geo\?query\=New%20York
 ```
 
 with POST
 
 ```sh
-curl -X POST -d "New York" http://localhost:8080/geoname --header "Content-Type:text/plain"
+curl -X POST -d "New York" http://localhost:8080/v1/geo --header "Content-Type:text/plain"
 ```
 
 Setup
@@ -51,7 +51,7 @@ sudo docker run -d -p 80:8080 ionchannel/lew
 after it starts you can test with curl
 
 ```sh
-curl http://localhost/geoname?query=New+York
+curl http://localhost/v1/geo?query=New+York
 ```
 
 License

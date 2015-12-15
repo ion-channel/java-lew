@@ -9,5 +9,5 @@ ADD https://github.com/ion-channel/lew/releases/download/lew-0.3/data-0.3.zip /d
 RUN unzip /data.zip -d /
 RUN chown -R 1000:1000 /data
 
-ADD https://github.com/ion-channel/lew/releases/download/lew-0.3/lew-0.3.war /usr/local/jetty/webapps/root.war
+ADD https://github.com/ion-channel/lew/releases/download/lew-0.4/lew-0.4.war /usr/local/jetty/webapps/root.war
 RUN chown 1000:1000 /usr/local/jetty/webapps/root.war
