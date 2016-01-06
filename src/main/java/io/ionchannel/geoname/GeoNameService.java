@@ -29,13 +29,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
-@Path("/v1")
+@Path("/v1/geo")
 public class GeoNameService {
     @Context
     private HttpServletRequest request;
@@ -44,24 +47,36 @@ public class GeoNameService {
     private static final Logger log = Logger.getLogger(GeoNameService.class);
     private GeoParser geoParser;
 
+
     @GET
     @Produces("application/json")
-    @Path("geo/expand")
-    public Response expandedGeocodeFromGet(@QueryParam("query") String input) {
+    @Path("/")
+    public Response root() {
+        Map<String, String> notFound = new HashMap<String, String>();
+        notFound.put("message", "not found");
+
+        return Response.status(Response.Status.NOT_FOUND).
+                entity(notFound).build();
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("getLocationsExpanded")
+    public Response expandedGeocodeFromGet(@QueryParam("text") String input) {
         return getResponseForQueryString(input, true);
     }
 
     @GET
     @Produces("application/json")
-    @Path("geo")
-    public Response geocodeFromGet(@QueryParam("query") String input) {
+    @Path("getLocations")
+    public Response geocodeFromGet(@QueryParam("text") String input) {
         return getResponseForQueryString(input, false);
     }
 
     @POST
     @Produces("application/json")
     @Consumes("text/plain")
-    @Path("geo")
+    @Path("getLocations")
     public Response geocodeFromPost(String input) {
         return getResponseForQueryString(input, false);
     }
@@ -87,7 +102,7 @@ public class GeoNameService {
         StringBuilder urlBuilder = new StringBuilder();
         try {
             urlBuilder.append(urlWithContext())
-                    .append("/geo?query=")
+                    .append("/getLocations?query=")
                     .append(URLEncoder.encode(resolvedLocation.getGeoname().getName(), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
         }
@@ -103,7 +118,7 @@ public class GeoNameService {
         StringBuilder urlBuilder = new StringBuilder();
         try {
             urlBuilder.append(urlWithContext())
-                    .append("/geo/expand?query=")
+                    .append("/getLocationsExpanded?query=")
                     .append(URLEncoder.encode(resolvedLocation.getGeoname().getName(), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
         }
