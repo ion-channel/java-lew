@@ -1,0 +1,19 @@
+sudo: false
+
+language: java
+
+before_install:
+
+script: mvn package
+
+notifications:
+  slack: selectpress:80BkOLkmohrgd7bWC7cdA8C5
+
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY 
+  bucket: s3-ion-test 
+  skip_cleanup: true
+  local_dir: target
+  upload_dir: files
