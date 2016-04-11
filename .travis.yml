@@ -12,8 +12,11 @@ notifications:
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY 
-  bucket: s3-ion-test 
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: s3-ion-test
   skip_cleanup: true
   local_dir: target
-  upload_dir: files
+  upload_dir: files/java-lew
+
+# after_success:
+#   - if [ "$TRAVIS_BRANCH" == "master" ]; then wget -O- -v --no-check-certificate --header=Content-Type:application/json  --post-data='{"url":"git@github.com:ion-channel/java-lew.git", "project":"ionchannel/java-lew", "tag":"latest", "branch":"master", "deploy":false }' "$DEPLOY_URL?apikey=$APIKEY"; fi
