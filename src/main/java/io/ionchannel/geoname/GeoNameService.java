@@ -36,6 +36,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 
 @Path("/v1/geo")
@@ -137,11 +138,15 @@ public class GeoNameService {
             return Response.status(Response.Status.NOT_FOUND).build();
 
         ObjectMapper mapper = new ObjectMapper();
-        Object response;
+        List response = new ArrayList();
         if (expand) {
-            response = expandedDataFromResolveLocation(resolvedLocations.get(0));
+            for (ResolvedLocation location : resolvedLocations){
+              response.add(expandedDataFromResolveLocation(location));
+            }
         } else {
-            response = simpleDataFromResolveLocation(resolvedLocations.get(0));
+          for (ResolvedLocation location : resolvedLocations){
+            response.add(simpleDataFromResolveLocation(location));
+          }
         }
 
         try {
