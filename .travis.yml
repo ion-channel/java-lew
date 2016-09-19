@@ -4,7 +4,9 @@ language: java
 
 before_install:
 
-script: mvn package
+script:
+  - wget --quiet https://s3.amazonaws.com/public.ionchannel.io/files/scripts/travis_analyze_project.sh; chmod +x travis_analyze_project.sh; ./travis_analyze_project.sh
+  - mvn package
 
 notifications:
   slack: selectpress:80BkOLkmohrgd7bWC7cdA8C5
@@ -18,5 +20,5 @@ deploy:
   local_dir: target
   upload_dir: files/java-lew
 
-after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then wget -O- -v --no-check-certificate --header=Content-Type:application/json  --post-data='{"url":"git@github.com:ion-channel/java-lew.git", "project":"ionchannel/java-lew", "tag":"latest", "branch":"master", "deploy":false }' "$DEPLOY_URL?apikey=$APIKEY"; fi
+# after_success:
+  # - if [ "$TRAVIS_BRANCH" == "master" ]; then wget -O- -v --no-check-certificate --header=Content-Type:application/json  --post-data='{"url":"git@github.com:ion-channel/java-lew.git", "project":"ionchannel/java-lew", "tag":"latest", "branch":"master", "deploy":false }' "$DEPLOY_URL?apikey=$APIKEY"; fi

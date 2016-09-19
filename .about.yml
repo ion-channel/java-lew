@@ -1,0 +1,43 @@
+---
+# .about.yml project metadata
+#
+# Copy this template into your project repository's root directory as
+# .about.yml and fill in the fields as described below.
+
+# This is a short name of your project that can be used as a URL slug.
+# (required)
+name: Java-Lew
+
+# This is the display name of your project. (required)
+full_name: Java Lew
+
+# What is the problem your project solves? What is the solution? Use the
+# format shown below. The #dashboard team will gladly help you put this
+# together for your project. (required)
+description: Java wrapper for clavin that returns what lew needs
+
+# What is the measurable impact of your project? Use the format shown below.
+# The #dashboard team will gladly help you put this together for your project.
+# (required)
+impact: high
+
+# What kind of team owns the repository? (required)
+# values: guild, working-group, project
+owner_type: project
+
+# What is your project's current status? (required)
+# values: discovery, alpha, beta, live
+stage: alpha
+
+# Should this repo have automated tests? If so, set to `true`. (required)
+# values: true, false
+testable: true
+
+licenses:
+  doozer:
+    name: GPLV2
+    url: https://github.com/ion-channel/java-lew/blob/master/license.txt
+
+team:
+- github: kitplummer
+  role: lead
