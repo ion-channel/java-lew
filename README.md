@@ -3,6 +3,7 @@ Lew
 
 Simple JSON Service for resolving GeoNames from unstructured input text using the CLAVIN project.
 
+![Compliance Status](https://api.ionchannel.io/v1/analysis/getProject?account_id=cf47e4d1-1926-4990-8ef8-f326be59d6fc&apikey=9a684743a58b4110c14d5279d3f868ba&project_id=9dd5f8fe-4a08-4799-8cfe-4e5813fd845e&format=badge) [![Build Status](https://travis-ci.org/ion-channel/java-lew.svg?branch=master)](https://travis-ci.org/ion-channel/java-lew)
 
 
 Version
