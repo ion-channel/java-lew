@@ -1,7 +1,8 @@
 Lew
 =========
 
-Simple JSON Service for resolving GeoNames from unstructured input text.
+Simple JSON Service for resolving GeoNames from unstructured input text using the CLAVIN project.
+
 
 
 Version
