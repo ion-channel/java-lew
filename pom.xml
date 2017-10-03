@@ -27,16 +27,6 @@
     <distributionManagement>
     </distributionManagement>
 
-    <repositories>
-        <!-- <repository>
-            <id>nexus.bericotechnologies.com</id>
-            <name>Berico Technologies Nexus</name>
-            <url>http://nexus.bericotechnologies.com/content/groups/public</url>
-            <releases><enabled>true</enabled></releases>
-            <snapshots><enabled>true</enabled></snapshots>
-        </repository> -->
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
