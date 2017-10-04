@@ -2,11 +2,13 @@ sudo: false
 
 language: java
 
-before_install:
 
 script:
-  - wget --quiet https://s3.amazonaws.com/public.ionchannel.io/files/scripts/travis_analyze_project.sh; chmod +x travis_analyze_project.sh; ./travis_analyze_project.sh
-  - mvn package
+  - mvn install
+  - 'curl -v --insecure -o threadfix.json -H "Accept: application/json" -X POST --form file=@target/dependency-check-report.xml https://threadfix.test.ionchannel.io/threadfix/rest/applications/$THREADFIX_PROJECT_ID/upload?apiKey=$THREADFIX_API_KEY'
+  - 'cat threadfix.json | jq -r ".object | {vulnerabilities: {low: .numberLowVulnerabilities,medium: .numberMediumVulnerabilities, high: .numberHighVulnerabilities, critical: .numberCriticalVulnerabilities}, raw: . }" > vulnerabilities.json'
+  - wget --quiet https://s3.amazonaws.com/public.ionchannel.io/files/ionize/linux/bin/ionize && chmod +x ionize
+  - ./ionize analyze
 
 notifications:
   slack: selectpress:80BkOLkmohrgd7bWC7cdA8C5
