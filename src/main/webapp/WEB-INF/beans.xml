@@ -61,6 +61,7 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
       <bean class="io.ionchannel.geoname.GeoNameService" >
             <property name="geoParser" ref="clavin"/>
       </bean>
+      <bean class="io.ionchannel.geoname.StatusService" />
     </jaxrs:serviceBeans>
     <jaxrs:providers>
         <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>

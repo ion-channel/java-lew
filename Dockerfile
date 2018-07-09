@@ -1,9 +1,6 @@
 FROM jetty:8.1-jre8
 MAINTAINER Kelly Plummer <kellyplummer@mac.com>
 
-
-RUN apt-get -y install unzip
-
 # Install lew data
 ADD https://s3.amazonaws.com/s3-ion-test/files/java-lew/data-0.3.zip /data.zip
 RUN unzip /data.zip -d /
@@ -16,7 +13,7 @@ RUN rm -rf /usr/local/jetty/contexts/test.xml /usr/local/jetty/contexts/javadoc.
 
 RUN mkdir -p app/tmp
 # Install lew
-ADD https://s3.amazonaws.com/s3-ion-test/files/java-lew/lew-0.5-SNAPSHOT.war /usr/local/jetty/webapps/root.war
+ADD ./target/lew-0.5-SNAPSHOT.war /usr/local/jetty/webapps/root.war
 
 RUN unzip /usr/local/jetty/webapps/root.war -d /usr/local/jetty/webapps/root
 RUN rm /usr/local/jetty/webapps/root.war
