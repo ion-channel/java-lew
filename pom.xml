@@ -11,7 +11,7 @@
 
     <properties>
         <jackson.version>1.8.6</jackson.version>
-        <jettyVersion>7.2.0.v20101020</jettyVersion>
+        <jettyVersion>[9.3.24.v20180605,)</jettyVersion>
         <clavin.nerd.version>2.0.0</clavin.nerd.version>
         <clavin.version>2.0.0</clavin.version>
         <test.server.port>8080</test.server.port>
@@ -94,7 +94,7 @@
         <dependency>
           <groupId>org.apache.httpcomponents</groupId>
           <artifactId>httpclient</artifactId>
-          <version>4.3.4</version>
+          <version>[4.3.6,)</version>
         </dependency>
     </dependencies>
 
